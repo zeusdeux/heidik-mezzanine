@@ -1,0 +1,27 @@
+{% load blog_tags keyword_tags mezzanine_tags i18n future %}
+
+<div class="right">
+
+{% block blog_recent_posts %}
+{% blog_recent_posts 3 as recent_posts %}
+{% if recent_posts %}
+<h3>{% trans "Recent Blog Posts" %}</h3>
+<ul class="recent-posts">
+{% for recent_post in recent_posts %}
+<li>
+    {% spaceless %}
+        {% if settings.BLOG_USE_FEATURED_IMAGE and recent_post.featured_image %}
+       <div class="recent-image img-responsive">
+        <img src="{{ MEDIA_URL }}{% thumbnail recent_post.featured_image 300 150 %}">
+         <a href="{{ recent_post.get_absolute_url }}">{{ recent_post.title }}</a>
+        </div>
+        {% endif %}
+    {% endspaceless %}
+</li>
+{% endfor %}
+</ul>
+{% endif %}
+{% endblock %}
+</div>
+
+

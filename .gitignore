@@ -1,3 +1,6 @@
+*.log
+*.pot
+__pycache__/
 *.pyc
 *.pyo
 *.db
