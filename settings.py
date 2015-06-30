@@ -94,7 +94,12 @@ MANAGERS = ADMINS
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+'52.27.137.245',
+'http://52.27.137.245',
+'http://52.27.137.245:8080',
+'http://52.27.137.245:8000',
+]
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -231,7 +236,7 @@ TEMPLATE_DIRS = (os.path.join(PROJECT_ROOT, "templates"),)
 ################
 
 INSTALLED_APPS = (
-    "django_extensions",
+   # "django_extensions",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -329,7 +334,22 @@ OPTIONAL_APPS = (
 #     "SECRET_KEY": SECRET_KEY,
 #     "NEVERCACHE_KEY": NEVERCACHE_KEY,
 # }
-
+FABRIC = {
+    "SSH_USER": "ubuntu", # SSH username for host deploying to
+    "SSH_KEY_PATH": "~/.ssh/mezzanine-test.pem",
+    "HOSTS": ALLOWED_HOSTS[:1], # List of hosts to deploy to (eg, first host)
+    "DOMAINS": ALLOWED_HOSTS, # Domains for public site
+    "REPO_URL": "https://github.com/zeusdeux/heidik-mezzanine.git", # Project's repo URL
+    "VIRTUALENV_HOME":  "/home/ubuntu", # Absolute remote path for virtualenvs
+    "PROJECT_NAME": "heidi", # Unique identifier for project
+    "REQUIREMENTS_PATH": "requirements.txt", # Project's pip requirements
+    "GUNICORN_PORT": 8080, # Port gunicorn will listen on
+    "LOCALE": "en_US.UTF-8", # Should end with ".UTF-8"
+    "DB_PASS": "", # Live database password
+    "ADMIN_PASS": "", # Live admin user password
+    "SECRET_KEY": "caccc51d-0e74-43d7-925c-6fc2ad3e6b2c2d877c9f-1fbb-40aa-9c57-07fdc14d411411ac17b9-0ba7-4393-812b-d45b5b262f9e",
+    "NEVERCACHE_KEY": "b0ea9d61-5d8d-4309-92dc-36f1a0ef60928dd571b6-60b6-4b20-999d-74165bdb05e8b969cd74-a49d-4377-aed3-e3336eb9fb76",
+}
 
 ##################
 # LOCAL SETTINGS #
