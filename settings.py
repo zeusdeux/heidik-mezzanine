@@ -96,9 +96,6 @@ MANAGERS = ADMINS
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
 ALLOWED_HOSTS = [
 '52.27.137.245',
-'http://52.27.137.245',
-'http://52.27.137.245:8080',
-'http://52.27.137.245:8000',
 ]
 
 # Local time zone for this installation. Choices can be found here:
@@ -126,7 +123,7 @@ LANGUAGES = (
 # A boolean that turns on/off debug mode. When set to ``True``, stack traces
 # are displayed for error pages. Should always be set to ``False`` in
 # production. Best set to ``True`` in local_settings.py
-DEBUG = False
+DEBUG = True
 
 # Whether a user's session cookie expires when the Web browser is closed.
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
